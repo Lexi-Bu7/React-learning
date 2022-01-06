@@ -1,34 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import { useState } from 'react/cjs/react.development';
 
-const Hello = (props) => {
-  return (
+
+
+const App = () => {
+  const[counter,setCounter] = useState(0)
+
+  const Display =({counter}) =>{
+    return(
+      <div>{counter}</div>
+    )
+  }
+
+  const increaseByOne=()=>{
+    setCounter(counter + 1)
+  }
+
+  const Reset = () =>{
+    setCounter(0)
+  }  
+  const decreaseByOne = () => {
+    setCounter(counter - 1)
+
+  }
+  const Button = ({onClick,text}) =>{
+    return(
+      <button onClick = {onClick}>
+        {text}
+      </button>
+    )
+  }
+
+  return(
     <div>
-      <p>Hello good afternoon {props.name}, you are {props.age}</p>
+      <Display counter = {counter} />
+      <Button onClick = {increaseByOne} text = 'plus' />
+      <Button onClick = {Reset} text = 'reset' />
+      <Button onClick = {decreaseByOne} text = 'minus' />
     </div>
   )
 }
-
-const Footer =() =>{
-  return (
-      <div>
-      greeting app created by <a href="https://github.com/Yue-Bu">Lexi Bu</a>
-      </div>
-  )
-}
-
-const App = () => {
-  const name = "Buck"
-  const age = 10
-  return (
-      <>
-      <h1>Greetings</h1>
-      <Hello name ={name} age={age + 13} />
-      <Hello name = "Case" age = {1} />
-      <Footer />
-      </>
-  )
-}
-
 export default App;

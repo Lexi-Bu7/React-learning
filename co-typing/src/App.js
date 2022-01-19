@@ -1,24 +1,37 @@
-const Hello =(props) =>{
-  const {name,age} = props
-  const bornYear = () => new Date().getFullYear() - age
-
-  return(
-    <div>
-      <p>Hello {name}, you are {age}</p>
-      <p>So you were probably born in {bornYear()}</p>
-    </div>
-  )
-}
+import React, {useState} from 'react'
 
 const App = () =>{
-  const name = 'Peter'
-  const age =10
+  const [counter, setCounter] = useState(0)
+
+  const Plus =() =>
+    setCounter(counter+1)
+  
+
+  const Zero = () =>
+    setCounter(0)
+  
+  const Display = ({counter}) =>{
+    return(
+      <div>
+        {counter}
+      </div>)
+  }
+
+  const Button =({name,text}) =>{
+
+    return(
+      <button onClick = {name}>
+        {text}
+        </button>
+    )
+  }
+  
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name = {name} age ={age}/>
+      <Display counter = {counter}/>
+      <Button name = {Plus} text = 'Plus' />
+      <Button name = {Zero} text = 'Plus' />
     </div>
   )
 }
-
 export default App;
